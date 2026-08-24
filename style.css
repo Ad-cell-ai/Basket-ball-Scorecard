@@ -1,0 +1,181 @@
+h1 {
+    color: #171a4b;
+
+    font-size: 42px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 600px;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #eeeeee;
+
+    font-family: Arial, sans-serif;
+}
+
+
+/* Main scoreboard */
+
+.scoreboard {
+    width: 900px;
+    min-height: 400px;
+
+    background: #171a4b;
+
+    border: 2px solid #8d80d8;
+
+    border-radius: 2px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    padding: 35px 70px;
+    
+}
+
+
+/* Team section */
+
+.team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* HOME / GUEST */
+
+.team h2 {
+    color: white;
+
+    font-size: 42px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 25px;
+}
+
+
+/* Score display */
+
+.score-box {
+    width: 260px;
+    height: 115px;
+
+    background: #020202;
+
+    border-radius: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 28px;
+}
+
+
+/* Digital score */
+
+.score-box div {
+    color: #ff4059;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 82px;
+    font-weight: bold;
+
+    line-height: 1;
+
+    text-shadow:
+        0 0 3px #ff4059;
+}
+
+
+/* Buttons */
+
+.buttons {
+    display: flex;
+    gap: 12px;
+}
+
+
+.buttons button {
+    width: 52px;
+    height: 42px;
+
+    background: transparent;
+
+    border: 2px solid #7780a7;
+
+    border-radius: 5px;
+
+    color: white;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+/* Hover */
+
+.buttons button:hover {
+    background: #303568;
+
+    border-color: #aeb6dc;
+
+    transform: translateY(-2px);
+}
+
+
+/* Click */
+
+.buttons button:active {
+    transform: translateY(0);
+}
+
+
+/* Responsive */
+
+@media (max-width: 700px) {
+
+    .scoreboard {
+        width: 95%;
+        padding: 30px 15px;
+
+        grid-template-columns: 1fr;
+
+        gap: 50px;
+    }
+
+    .team h2  {
+        font-size: 32px;
+    }
+
+    .score-box {
+        width: 220px;
+    }
+}

@@ -3,53 +3,438 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Basketball Scoreboard</title>
-    
 
     <link rel="stylesheet" href="style.css">
 </head>
-<h1>Basketball Scoreboard</h1>
+
 <body>
 
-    <div class="scoreboard">
+    <!-- HEADER -->
+    <header class="page-header">
 
-        <!-- HOME -->
-        <div class="team">
+        <h1>🏀 Basketball Scoreboard</h1>
 
-            <h2>HOME</h2>
+        <p>
+            Live Game • 4 Quarters • Halftime • Round History
+        </p>
 
-            <div class="score-box">
-                <div id="home-score">0</div>
+    </header>
+
+
+    <main class="app">
+
+        <!-- TOP CONTROL BAR -->
+        <section class="top-bar">
+
+            <div class="game-status">
+
+                <span id="game-status-dot"></span>
+
+                <span id="game-status">
+                    Game not started
+                </span>
+
             </div>
 
-            <div class="buttons">
-                <button onclick="addScore('home', 1)">+1</button>
-                <button onclick="addScore('home', 2)">+2</button>
-                <button onclick="addScore('home', 3)">+3</button>
+
+            <div class="game-controls">
+
+                <button
+                    class="control-btn primary"
+                    id="new-game-btn"
+                >
+                    New Game
+                </button>
+
+                <button
+                    class="control-btn"
+                    id="new-round-btn"
+                    disabled
+                >
+                    New Round
+                </button>
+
             </div>
 
-        </div>
+        </section>
 
 
-        <!-- GUEST -->
-        <div class="team">
+        <!-- MAIN SCOREBOARD -->
+        <section class="scoreboard">
 
-            <h2>GUEST</h2>
 
-            <div class="score-box">
-                <div id="guest-score">0</div>
+            <!-- GAME CLOCK -->
+            <div class="game-clock">
+
+                <div
+                    class="period"
+                    id="period-label"
+                >
+                    READY
+                </div>
+
+                <div
+                    class="clock"
+                    id="game-clock"
+                >
+                    12:00
+                </div>
+
+                <div
+                    class="clock-help"
+                    id="clock-help"
+                >
+                    Press Start Game to begin
+                </div>
+
             </div>
 
-            <div class="buttons">
-                <button onclick="addScore('guest', 1)">+1</button>
-                <button onclick="addScore('guest', 2)">+2</button>
-                <button onclick="addScore('guest', 3)">+3</button>
+
+
+            <!-- TEAM 1 -->
+            <div
+                class="team-card"
+                id="home-card"
+            >
+
+                <div
+                    class="team-name"
+                    id="home-name"
+                >
+                    TEAM A
+                </div>
+
+
+                <div
+                    class="score"
+                    id="home-score"
+                >
+                    0
+                </div>
+
+
+                <!-- SCORE BUTTONS -->
+                <div class="score-buttons">
+
+                    <button
+                        data-team="home"
+                        data-points="1"
+                    >
+                        +1
+                    </button>
+
+                    <button
+                        data-team="home"
+                        data-points="2"
+                    >
+                        +2
+                    </button>
+
+                    <button
+                        data-team="home"
+                        data-points="3"
+                    >
+                        +3
+                    </button>
+
+                </div>
+
+
+                <!-- FOULS -->
+                <div class="team-meta">
+
+                    <span>
+                        Fouls
+                    </span>
+
+                    <strong id="home-fouls">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <button
+                    class="foul-btn"
+                    data-foul-team="home"
+                >
+                    + Foul
+                </button>
+
             </div>
+
+
+
+            <!-- VS -->
+            <div class="vs">
+                VS
+            </div>
+
+
+
+            <!-- TEAM 2 -->
+            <div
+                class="team-card"
+                id="guest-card"
+            >
+
+                <div
+                    class="team-name"
+                    id="guest-name"
+                >
+                    TEAM B
+                </div>
+
+
+                <div
+                    class="score"
+                    id="guest-score"
+                >
+                    0
+                </div>
+
+
+                <!-- SCORE BUTTONS -->
+                <div class="score-buttons">
+
+                    <button
+                        data-team="guest"
+                        data-points="1"
+                    >
+                        +1
+                    </button>
+
+                    <button
+                        data-team="guest"
+                        data-points="2"
+                    >
+                        +2
+                    </button>
+
+                    <button
+                        data-team="guest"
+                        data-points="3"
+                    >
+                        +3
+                    </button>
+
+                </div>
+
+
+                <!-- FOULS -->
+                <div class="team-meta">
+
+                    <span>
+                        Fouls
+                    </span>
+
+                    <strong id="guest-fouls">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <button
+                    class="foul-btn"
+                    data-foul-team="guest"
+                >
+                    + Foul
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ROUND HISTORY -->
+        <section class="round-panel">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h2>
+                        Round Results
+                    </h2>
+
+                    <p>
+                        Completed rounds are saved automatically.
+                    </p>
+
+                </div>
+
+
+                <div
+                    class="series-score"
+                    id="series-score"
+                >
+                    0 - 0
+                </div>
+
+            </div>
+
+
+            <div
+                id="round-history"
+                class="round-history"
+            >
+
+                <div class="empty-history">
+                    No completed rounds yet.
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- NEW GAME MODAL -->
+    <div
+        class="modal hidden"
+        id="new-game-modal"
+    >
+
+        <div class="modal-card">
+
+            <button
+                class="close-btn"
+                id="close-modal"
+                aria-label="Close"
+            >
+                ×
+            </button>
+
+
+            <div class="modal-icon">
+                🏀
+            </div>
+
+
+            <h2>
+                Start a New Game
+            </h2>
+
+
+            <p>
+                Enter the team names. No prefixes are added.
+            </p>
+
+
+
+            <!-- TEAM 1 NAME -->
+            <label for="home-team-input">
+                Team 1
+            </label>
+
+            <input
+                id="home-team-input"
+                type="text"
+                maxlength="24"
+                placeholder="Enter team name"
+                autocomplete="off"
+            >
+
+
+
+            <!-- TEAM 2 NAME -->
+            <label for="guest-team-input">
+                Team 2
+            </label>
+
+            <input
+                id="guest-team-input"
+                type="text"
+                maxlength="24"
+                placeholder="Enter team name"
+                autocomplete="off"
+            >
+
+
+
+            <!-- START -->
+            <button
+                class="start-btn"
+                id="start-game-btn"
+            >
+                Start Game
+            </button>
 
         </div>
 
     </div>
 
+
+
+    <!-- GAME START COUNTDOWN -->
+    <div
+        class="countdown hidden"
+        id="countdown-overlay"
+    >
+
+        <div class="countdown-inner">
+
+            <div id="countdown-period">
+                GAME STARTING
+            </div>
+
+            <strong id="countdown-number">
+                5
+            </strong>
+
+            <span>
+                Get ready!
+            </span>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- HALFTIME / BREAK -->
+    <div
+        class="break-overlay hidden"
+        id="break-overlay"
+    >
+
+        <div class="break-card">
+
+            <div class="break-icon">
+                ⏱
+            </div>
+
+
+            <h2 id="break-title">
+                HALFTIME
+            </h2>
+
+
+            <p id="break-message">
+                The first half is complete.
+            </p>
+
+
+            <button
+                class="start-btn"
+                id="continue-btn"
+            >
+                Continue Game
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- JAVASCRIPT -->
     <script src="script.js"></script>
 
 </body>
